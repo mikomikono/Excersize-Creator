@@ -6,7 +6,7 @@ Ohjelma, jonka avulla voi luoda ja tehdä opiskeluun tarkoitettuja tehtäviä. T
 **Toiminnot:**
 * Käyttäjätunnusten luonti
 * Tehtävien luonti
- * Onnistuu jos kirjautunut sisään
+  * Onnistuu jos kirjautunut sisään
 * Tehtävien tekeminen
 * Tehtävien vastausten tarkastelu
- * Onnistuu jos tehtävien luoja
+  * Onnistuu jos tehtävien luoja
