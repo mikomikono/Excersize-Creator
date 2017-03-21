@@ -29,8 +29,8 @@ public class ExcersizeCreatorTest {
     public void tearDown() {
     }
 
-    @Test
-    public void test() {
-        System.out.println("hello");
-    }
+//    @Test
+//    public void test() {
+//        System.out.println("hello");
+//    }
 }
