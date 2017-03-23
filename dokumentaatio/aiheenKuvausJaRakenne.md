@@ -10,3 +10,7 @@ Ohjelma, jonka avulla voi luoda ja tehdä opiskeluun tarkoitettuja tehtäviä. T
 * Tehtävien tekeminen
 * Tehtävien vastausten tarkastelu
   * Onnistuu jos tehtävien luoja
+
+**Luokkakaavio**
+
+![luokkakaavio](https://github.com/mikomikono/Excersize-Creator/blob/master/dokumentaatio/luokkakaavio/luokkakaavio.png)
