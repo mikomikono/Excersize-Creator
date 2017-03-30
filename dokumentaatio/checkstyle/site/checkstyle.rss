@@ -19,13 +19,13 @@ under the License.
 -->
 <rss version="0.91">
   <channel>
-    <title>ExcerizeCreator - Checkstyle report</title>
+    <title>ExcersizeCreator - Checkstyle report</title>
     <link>${project.url}</link>
-    <description>ExcerizeCreator - Checkstyle report</description>
+    <description>ExcersizeCreator - Checkstyle report</description>
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 6,
+      <title>File: 9,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#creators.excerizecreator.MultipleChoice.java">creators/excerizecreator/MultipleChoice.java</a>
+                  <a href="${project.url}/checkstyle.html#creators.excersizecreator.questions.MultipleChoice.java">creators/excersizecreator/questions/MultipleChoice.java</a>
                 </td>
                 <td>
                   0
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#creators.excerizecreator.ExcersizeCreator.java">creators/excerizecreator/ExcersizeCreator.java</a>
+                  <a href="${project.url}/checkstyle.html#creators.excersizecreator.questionlogic.QuestionManager.java">creators/excersizecreator/questionlogic/QuestionManager.java</a>
                 </td>
                 <td>
                   0
@@ -74,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#creators.excerizecreator.OpenQuestion.java">creators/excerizecreator/OpenQuestion.java</a>
+                  <a href="${project.url}/checkstyle.html#creators.excersizecreator.gui.SubmitListener.java">creators/excersizecreator/gui/SubmitListener.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#creators.excerizecreator.Question.java">creators/excerizecreator/Question.java</a>
+                  <a href="${project.url}/checkstyle.html#creators.excersizecreator.ExcersizeCreator.java">creators/excersizecreator/ExcersizeCreator.java</a>
                 </td>
                 <td>
                   0
@@ -102,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#creators.excerizecreator.QuestionManager.java">creators/excerizecreator/QuestionManager.java</a>
+                  <a href="${project.url}/checkstyle.html#creators.excersizecreator.questions.Question.java">creators/excersizecreator/questions/Question.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +116,49 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#creators.excerizecreator.Essay.java">creators/excerizecreator/Essay.java</a>
+                  <a href="${project.url}/checkstyle.html#creators.excersizecreator.questions.OpenQuestion.java">creators/excersizecreator/questions/OpenQuestion.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#creators.excersizecreator.questionlogic.ExcersizeManager.java">creators/excersizecreator/questionlogic/ExcersizeManager.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#creators.excersizecreator.gui.UserInterface.java">creators/excersizecreator/gui/UserInterface.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#creators.excersizecreator.questions.Essay.java">creators/excersizecreator/questions/Essay.java</a>
                 </td>
                 <td>
                   0
