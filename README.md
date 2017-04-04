@@ -4,8 +4,8 @@ Ohjelma jolla voi luoda opetukseen ja/tai opiskeluun tarkoitettuja tehtäviä/An
 ## Dokumentaatio
 [Aiheen kuvaus](https://github.com/mikomikono/Excersize-Creator/blob/master/dokumentaatio/aiheenKuvausJaRakenne.md)
 [Tuntikirjanpito](https://github.com/mikomikono/Excersize-Creator/blob/master/dokumentaatio/tuntikirjanpito.md)
-[Pit testaus](https://github.com/mikomikono/Excersize-Creator/tree/master/dokumentaatio/pit)
-[Checkstyle](https://github.com/mikomikono/Excersize-Creator/tree/master/dokumentaatio/checkstyle)
+[Pit testaus](https://htmlpreview.github.io/?https://github.com/mikomikono/Excersize-Creator/blob/master/dokumentaatio/pit/201703302034/index.html)
+[Checkstyle](https://htmlpreview.github.io/?https://github.com/mikomikono/Excersize-Creator/blob/master/dokumentaatio/checkstyle/site/checkstyle.html)
 
 ## Notes
 - Säädin paljon Question-rajapinnan totauttavien luokkien kanssa, jotta saisin ne toimimaan mahdollisimman hyvin. Pohdin myös ExcersizeManager luokan tarpeellisuutta QuestionManagerin ohessa, mutta tällä hetkellä koen vielä että siitä voi olla hyötyä.
