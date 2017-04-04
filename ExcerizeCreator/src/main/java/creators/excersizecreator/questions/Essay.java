@@ -1,24 +1,21 @@
 package creators.excersizecreator.questions;
 
-import creators.excersizecreator.questions.Question;
-import java.util.*;
-
 public class Essay implements Question {
-    private List<Boolean> correct;
-    private String question;
-    private String notes;
-    private List<String> answer;
-    private List<String> answered;
+    private final Boolean correct;
+    private final String question;
+    private final String notes;
+    private final String answer;
+    private String answered;
 
-    public Essay(String question, String notes, List<String> answer) {
+    public Essay(String question, String notes, String answer) {
+        this.correct = Boolean.FALSE;
         this.question = question;
         this.notes = notes;
         this.answer = answer;
-        this.answered = new ArrayList<>();
     }
 
     @Override
-    public List<String> returnAnswers() {
+    public String returnAnswer() {
         return this.answer;
     }
 
@@ -30,12 +27,12 @@ public class Essay implements Question {
     @Override
     public void addAnswered(String q, String a) {
         if (this.question.equals(q)) {
-            this.answered.add(a);
+            this.answered = a;
         }
     }
 
     @Override
-    public List<String> returnAnswered() {
+    public String returnAnswered() {
         return this.answered;
     }
     
@@ -45,13 +42,7 @@ public class Essay implements Question {
     }
     
     @Override
-    public List<Boolean> returnCorrect() {
-        check();
+    public Boolean returnCorrect() {
         return this.correct;
-    }
-    
-    @Override
-    public void check() {
-        this.correct = new ArrayList<>();
     }
 }

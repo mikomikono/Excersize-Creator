@@ -14,9 +14,7 @@ public class ExcersizeManager {
     }
     
     public void createOQ(String question, String answer, String notes) {
-        List<String> a = new ArrayList<>();
-        a.add(answer);
-        this.qm.createOQ(question, notes, a);
+
     }
     
     public void createEssay() {

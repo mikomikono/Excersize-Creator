@@ -1,9 +1,6 @@
 package creators.excersizecreator.questionlogic;
 
-import creators.excersizecreator.questions.OpenQuestion;
-import creators.excersizecreator.questions.MultipleChoice;
-import creators.excersizecreator.questions.Question;
-import creators.excersizecreator.questions.Essay;
+import creators.excersizecreator.questions.*;
 import java.util.*;
 
 public class QuestionManager {
@@ -13,17 +10,17 @@ public class QuestionManager {
         this.questions = new ArrayList<>();
     }
     
-    public void createMC(String question, String notes, Map<String, Boolean> choices) {
-        MultipleChoice mc = new MultipleChoice(question, notes, choices);
+    public void createTOF(String question, String notes, Boolean choices) {
+        TrueOrFalse mc = new TrueOrFalse(question, notes, choices);
         this.questions.add(mc);
     }
     
-    public void createOQ(String question, String notes, List<String> answer) {
+    public void createOQ(String question, String notes, String answer) {
         OpenQuestion oq = new OpenQuestion(question, notes, answer);
         this.questions.add(oq);
     }
     
-    public void createEssay(String question, String notes, List<String> answer) {
+    public void createEssay(String question, String notes, String answer) {
         Essay es = new Essay(question, notes, answer);
         this.questions.add(es);
     }
@@ -48,9 +45,11 @@ public class QuestionManager {
         return qs;
     }
     
-    public void checkIfCorrect() {
+    public List<Boolean> returnCorrects() {
+        List<Boolean> cs = new ArrayList<>();
         for (Question q : this.questions) {
-            q.check();
+            cs.add(q.returnCorrect());
         }
+        return cs;
     }
 }
