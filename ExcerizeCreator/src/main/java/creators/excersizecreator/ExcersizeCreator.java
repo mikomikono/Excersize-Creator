@@ -3,6 +3,7 @@ package creators.excersizecreator;
 import creators.excersizecreator.questionlogic.ExcersizeManager;
 import creators.excersizecreator.gui.UserInterface;
 import creators.excersizecreator.gui.SubmitListener;
+import creators.excersizecreator.questionlogic.QuestionManager;
 import javax.swing.SwingUtilities;
 
 public class ExcersizeCreator {
@@ -10,11 +11,18 @@ public class ExcersizeCreator {
         ExcersizeManager em = new ExcersizeManager();
         SubmitListener al = new SubmitListener();
         
-        em.createOQ("Matkustamme pian Amerikkaan.", "We will travel to America soon.", " ");
-        em.createOQ("Etkö tule huomenna kouluun.", "Won't you come to school tomorrow?", " ");
-        em.createOQ("Katson usein televisiota.", "I watch TV often.", " ");
-        em.createOQ("Teidän täytyy kiirehtiä!", "You must hurry!", " ");
-        em.createOQ("Tuleeko hän kuulemaan tästä?", "Will she hear about this?", " ");
+        QuestionManager qm = new QuestionManager();
+        qm.createOQ("hello", "hello hello", "hi");
+        qm.createEssay("wee", "woo", "waa");
+        qm.createTOF("ya", "ye", Boolean.TRUE);
+        System.out.println(qm.returnQuestions());
+        
+        qm.answer("hello", "hey");
+        qm.answer("wee", "wapadapadoo");
+        qm.answer("ya", "true");
+        System.out.println(qm.returnQuestions());
+        System.out.println(qm.returnCorrects());
+        System.out.println(qm.returnQuestions());
         
         UserInterface ui = new UserInterface(em, al);
         SwingUtilities.invokeLater(ui);

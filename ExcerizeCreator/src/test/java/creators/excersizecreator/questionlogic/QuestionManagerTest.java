@@ -155,4 +155,30 @@ public class QuestionManagerTest {
         cs.add(Boolean.TRUE);
         assertEquals(this.qm.returnCorrects(), cs);
     }
+    
+    @Test
+    public void checkingWorks() {
+        this.qm.createOQ("Never gonna give", "Never gonna give", "give you up");
+        this.qm.answer("Never gonna give", "give you up");
+        this.qm.check();
+        assertEquals(this.qm.questions.get(0).returnCorrect(), Boolean.TRUE);
+    }
+    
+    @Test
+    public void tOFtoStringCorrect() {
+        this.qm.createTOF("Never gonna give you up", "Never gonna let you down", Boolean.TRUE);
+        assertEquals(this.qm.questions.get(0).toString(), "Never gonna give you up|Never gonna let you down|true|null|null");
+    }
+    
+    @Test
+    public void oQtoStringCorrect() {
+        this.qm.createOQ("Never gonna", "Run around", "And desert you");
+        assertEquals(this.qm.questions.get(0).toString(), "Never gonna|Run around|And desert you|null|null");
+    }
+    
+    @Test
+    public void essaytoStringCorrect() {
+        this.qm.createEssay("Never gonna make you cry", "Never gonna say goodbye", "Never gonna tell a lie");
+        assertEquals(this.qm.questions.get(0).toString(), "Never gonna make you cry|Never gonna say goodbye|Never gonna tell a lie|null|false");
+    }
 }

@@ -52,4 +52,10 @@ public class QuestionManager {
         }
         return cs;
     }
+    
+    public void check() {
+        for (Question q: this.questions) {
+            q.returnCorrect();
+        }
+    }
 }

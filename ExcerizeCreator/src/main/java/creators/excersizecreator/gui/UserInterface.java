@@ -33,9 +33,9 @@ public class UserInterface implements Runnable {
         BoxLayout layout = new BoxLayout(container, BoxLayout.Y_AXIS);
         container.setLayout(layout);
         
-        for (String q: this.em.returnQuestion()) {
-            container.add(new JLabel(q));
-        }
+//        for (String q: this.em.returnQuestion()) {
+//            container.add(new JLabel(q));
+//        }
 
 //        container.add(new JLabel("1. Futuurin hahmottaminen:"));
 //        container.add(new JLabel("Valitse lauseet, jotka viittaavat tulevaisuudessa"));

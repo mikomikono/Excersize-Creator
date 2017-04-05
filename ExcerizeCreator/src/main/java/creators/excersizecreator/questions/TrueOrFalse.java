@@ -67,4 +67,9 @@ public class TrueOrFalse implements Question {
             this.correct = Boolean.FALSE;
         }
     }
+    
+    @Override
+    public String toString() {
+        return this.question + "|" + this.notes + "|" + this.answer + "|" + this.answered + "|" + this.correct;
+    }
 }

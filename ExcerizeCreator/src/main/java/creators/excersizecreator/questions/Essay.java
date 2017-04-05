@@ -45,4 +45,9 @@ public class Essay implements Question {
     public Boolean returnCorrect() {
         return this.correct;
     }
+    
+    @Override
+    public String toString() {
+        return this.question + "|" + this.notes + "|" + this.answer + "|" + this.answered + "|" + this.correct;
+    }
 }
