@@ -158,10 +158,13 @@ public class QuestionManagerTest {
     
     @Test
     public void checkingWorks() {
+        this.qm.createEssay("Never gonna", "Never gonna", "give you up");
         this.qm.createOQ("Never gonna give", "Never gonna give", "give you up");
         this.qm.answer("Never gonna give", "give you up");
+        this.qm.answer("Never gonna", "give you up");
         this.qm.check();
-        assertEquals(this.qm.questions.get(0).returnCorrect(), Boolean.TRUE);
+        assertEquals(Boolean.FALSE, this.qm.questions.get(0).returnCorrect());
+        assertEquals(Boolean.TRUE, this.qm.questions.get(1).returnCorrect());
     }
     
     @Test

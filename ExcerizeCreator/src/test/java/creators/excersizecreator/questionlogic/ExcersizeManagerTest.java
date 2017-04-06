@@ -12,7 +12,7 @@ public class ExcersizeManagerTest {
     @Before
     public void setUp() {
         this.em = new ExcersizeManager();
-        this.em.addQuestionGroup();
+        this.em.addQuestionGroup("topic");
     }
     
     @Test
@@ -27,38 +27,38 @@ public class ExcersizeManagerTest {
     
     @Test
     public void addingTOFWorks() {
-        this.em.addQuestion(0, 0, "wah", "wah", "true");
-        assertEquals(this.em.returnQMs().get(0).questions.get(0).returnAnswer(), "T");
+        this.em.addQuestion("topic", 0, "wah", "wah", "true");
+        assertEquals("T", this.em.returnQMs().get(0).questions.get(0).returnAnswer());
     }
     
     @Test
     public void addingOQWorks() {
-        this.em.addQuestion(0, 1, "weh", "whe", "oops");
-        assertNotNull(this.em.returnQMs().get(0).questions.get(0));
+        this.em.addQuestion("topic", 1, "weh", "whe", "oops");
+        assertEquals("weh", this.em.returnQMs().get(0).questions.get(0).returnQuestion());
     }
     
     @Test
     public void addingEssayWorks() {
-        this.em.addQuestion(0, 2, "hah", "heh", "haaaah");
-        assertNotNull(this.em.returnQMs().get(0).questions.get(0));
+        this.em.addQuestion("topic", 2, "hah", "heh", "haaaah");
+        assertEquals("hah", this.em.returnQMs().get(0).questions.get(0).returnQuestion());
     }
     
     @Test
     public void addingAnswersWorks() {
-        this.em.addQuestion(0, 1, "hello", "nah", "hello");
-        this.em.addAnswer(0, "hello", "hello");
-        assertNotNull(this.em.returnQMs().get(0).questions.get(0).returnAnswered());
+        this.em.addQuestion("topic", 1, "hello", "nah", "hello");
+        this.em.addAnswer("topic", "hello", "hello");
+        assertEquals("hello", this.em.returnQMs().get(0).questions.get(0).returnAnswered());
     }
     
     @Test
     public void returningQuestionsWorks() {
-        this.em.addQuestion(0, 3, "ye", "ha", "hoo");
-        assertNotNull(this.em.returnQMsQuestions(0).get(0));
+        this.em.addQuestion("topic", 3, "ye", "ha", "hoo");
+        assertEquals("ye", this.em.returnQMsQuestions("topic").get(0));
     }
     
     @Test
-    public void createsNewQMIfIndexTooBig() {
-        this.em.addQuestion(1, 0, "ye", "ya", "yo");
-        assertNotNull(this.em.returnQMs().get(1));
+    public void createsNewQMIfNewTopic() {
+        this.em.addQuestion("topic2", 0, "ye", "ya", "yo");
+        assertEquals("topic2", this.em.returnsTopics().get(0));
     }
 }

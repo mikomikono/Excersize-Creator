@@ -1,5 +1,8 @@
 package creators.excersizecreator.questions;
 
+/**
+ * Class for essay questions.
+ */
 public class Essay implements Question {
     private final Boolean correct;
     private final String question;

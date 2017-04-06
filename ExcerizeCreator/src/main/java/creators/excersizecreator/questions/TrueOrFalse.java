@@ -1,5 +1,8 @@
 package creators.excersizecreator.questions;
 
+/**
+ * Class for questions that have true or false as an answer.
+ */
 public class TrueOrFalse implements Question {
     private Boolean correct;
     private final String question;

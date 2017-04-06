@@ -1,5 +1,8 @@
 package creators.excersizecreator.questions;
 
+/**
+ * Class for questions that can be answered with anything.
+ */
 public class OpenQuestion implements Question {
     private Boolean correct;
     private final String question;

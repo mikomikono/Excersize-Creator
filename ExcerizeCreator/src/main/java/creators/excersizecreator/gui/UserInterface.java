@@ -5,6 +5,9 @@ import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.*;
 
+/**
+ * Class for creating the user interface.
+ */
 public class UserInterface implements Runnable {
 
     private JFrame frame;

@@ -6,6 +6,9 @@ import creators.excersizecreator.gui.SubmitListener;
 import creators.excersizecreator.questionlogic.QuestionManager;
 import javax.swing.SwingUtilities;
 
+/**
+ * Main class for setting up the creator.
+ */
 public class ExcersizeCreator {
     public static void main(String[] args) {
         ExcersizeManager em = new ExcersizeManager();

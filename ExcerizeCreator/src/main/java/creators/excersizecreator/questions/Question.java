@@ -1,5 +1,8 @@
 package creators.excersizecreator.questions;
 
+/**
+ * Interface for the different question types.
+ */
 public interface Question {
     public String returnAnswer();
     public String returnQuestion();

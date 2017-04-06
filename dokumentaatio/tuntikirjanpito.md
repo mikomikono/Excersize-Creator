@@ -8,3 +8,4 @@ Päivä | Tunnit | Kuvaus
 30.03.2017 | 2h | Testejä, MultipleChoice -luokan perustavanlaatuista muokkaamista
 04.04.2017 | 3h | Sain vihdoin MultipleChoice -luokan kuntoon! Se vaatikin sitten koko logiikan uudelleen muokkausta, joten käytin melkein koko ajan muokaten jo olemassa olevaa koodia +muutama testi lisätty
 05.04.2015 | 2h | FileManager -luokan luonti, ExcersizeManager -luokan aloitus, testien tekoa
+06.04.2017 | 1.5h | JavaDocin aloitus, ExcersizeManagering muokkaus, 4. dediksen viimeistely
