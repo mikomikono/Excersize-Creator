@@ -1,4 +1,4 @@
-package creators.excersizecreator.questionlogic;
+package creators.exercisecreator.questionlogic;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -25,7 +25,7 @@ public class FileManager {
                 lines.add(reader.nextLine());
             }
         } catch (Exception e) {
-            System.out.println("No excersize found.");
+            lines.add("No excersize found.");
         }
         return lines;
     }

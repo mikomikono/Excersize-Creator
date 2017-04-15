@@ -1,17 +1,18 @@
-package creators.excersizecreator.questionlogic;
+package creators.exercisecreator.questionlogic;
 
+import creators.exercisecreator.questionlogic.ExerciseManager;
 import org.junit.*;
 import static org.junit.Assert.*;
 
-public class ExcersizeManagerTest {
-    private ExcersizeManager em;
+public class ExerciseManagerTest {
+    private ExerciseManager em;
     
-    public ExcersizeManagerTest() {
+    public ExerciseManagerTest() {
     }
     
     @Before
     public void setUp() {
-        this.em = new ExcersizeManager();
+        this.em = new ExerciseManager();
         this.em.addQuestionGroup("topic");
     }
     
@@ -28,26 +29,26 @@ public class ExcersizeManagerTest {
     @Test
     public void addingTOFWorks() {
         this.em.addQuestion("topic", 0, "wah", "wah", "true");
-        assertEquals("T", this.em.returnQMs().get(0).questions.get(0).returnAnswer());
+        assertEquals("T", this.em.returnQMs().get(0).returnQuestions().get(0).returnAnswer());
     }
     
     @Test
     public void addingOQWorks() {
         this.em.addQuestion("topic", 1, "weh", "whe", "oops");
-        assertEquals("weh", this.em.returnQMs().get(0).questions.get(0).returnQuestion());
+        assertEquals("weh", this.em.returnQMs().get(0).returnQuestions().get(0).returnQuestion());
     }
     
     @Test
     public void addingEssayWorks() {
         this.em.addQuestion("topic", 2, "hah", "heh", "haaaah");
-        assertEquals("hah", this.em.returnQMs().get(0).questions.get(0).returnQuestion());
+        assertEquals("hah", this.em.returnQMs().get(0).returnQuestions().get(0).returnQuestion());
     }
     
     @Test
     public void addingAnswersWorks() {
         this.em.addQuestion("topic", 1, "hello", "nah", "hello");
         this.em.addAnswer("topic", "hello", "hello");
-        assertEquals("hello", this.em.returnQMs().get(0).questions.get(0).returnAnswered());
+        assertEquals("hello", this.em.returnQMs().get(0).returnQuestions().get(0).returnAnswered());
     }
     
     @Test
@@ -59,6 +60,6 @@ public class ExcersizeManagerTest {
     @Test
     public void createsNewQMIfNewTopic() {
         this.em.addQuestion("topic2", 0, "ye", "ya", "yo");
-        assertEquals("topic2", this.em.returnsTopics().get(0));
+        assertEquals("topic2", this.em.returnTopics().get(0));
     }
 }

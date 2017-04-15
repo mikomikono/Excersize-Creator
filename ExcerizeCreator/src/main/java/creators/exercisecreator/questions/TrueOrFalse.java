@@ -1,4 +1,4 @@
-package creators.excersizecreator.questions;
+package creators.exercisecreator.questions;
 
 /**
  * Class for questions that have true or false as an answer.
@@ -72,7 +72,12 @@ public class TrueOrFalse implements Question {
     }
     
     @Override
+    public int returnType() {
+        return 0;
+    }
+    
+    @Override
     public String toString() {
-        return this.question + "|" + this.notes + "|" + this.answer + "|" + this.answered + "|" + this.correct;
+        return this.question + "~" + this.notes + "~" + this.answer + "~" + this.answered + "~" + this.correct;
     }
 }

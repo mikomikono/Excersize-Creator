@@ -1,4 +1,4 @@
-package creators.excersizecreator.questions;
+package creators.exercisecreator.questions;
 
 /**
  * Class for questions that can be answered with anything.
@@ -51,15 +51,22 @@ public class OpenQuestion implements Question {
     }
     
     public void check() {
-        if (this.answered.contains(this.answer)) {
-            this.correct = Boolean.TRUE;
-        } else {
-            this.correct = Boolean.FALSE;
+        this.correct = Boolean.FALSE;
+        String[] as = this.answer.split("/");
+        for (int i = 0; i < as.length; i++) {
+            if (this.answered.contains(as[i])) {
+                this.correct = Boolean.TRUE;
+            }
         }
     }
     
     @Override
+    public int returnType() {
+        return 1;
+    }
+    
+    @Override
     public String toString() {
-        return this.question + "|" + this.notes + "|" + this.answer + "|" + this.answered + "|" + this.correct;
+        return this.question + "~" + this.notes + "~" + this.answer + "~" + this.answered + "~" + this.correct;
     }
 }

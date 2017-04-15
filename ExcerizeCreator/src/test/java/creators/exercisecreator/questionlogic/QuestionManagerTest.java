@@ -1,5 +1,6 @@
-package creators.excersizecreator.questionlogic;
+package creators.exercisecreator.questionlogic;
 
+import creators.exercisecreator.questionlogic.QuestionManager;
 import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -12,7 +13,7 @@ public class QuestionManagerTest {
     
     @Before
     public void setUp() {
-        this.qm = new QuestionManager();
+        this.qm = new QuestionManager("Rickroll");
     }
 
     @Test
@@ -108,8 +109,8 @@ public class QuestionManagerTest {
         this.qm.createTOF("Never gonna tell a lie", "And hurt you", Boolean.FALSE);
         this.qm.answer("Never gonna make you cry", "true");
         this.qm.answer("Never gonna tell a lie", "true");
-        assertTrue(this.qm.questions.get(0).returnCorrect());
-        assertFalse(this.qm.questions.get(1).returnCorrect());
+        assertTrue(this.qm.returnQuestions().get(0).returnCorrect());
+        assertFalse(this.qm.returnQuestions().get(1).returnCorrect());
     }
     
     @Test
@@ -118,15 +119,15 @@ public class QuestionManagerTest {
         this.qm.createOQ("Never gonna give you up", "Never gonna let you down", "Never gonna run around and desert you!");
         this.qm.answer("Never gonna give", "give you up");
         this.qm.answer("Never gonna give you up", "Never gonna give");
-        assertTrue(this.qm.questions.get(0).returnCorrect());
-        assertFalse(this.qm.questions.get(1).returnCorrect());
+        assertTrue(this.qm.returnQuestions().get(0).returnCorrect());
+        assertFalse(this.qm.returnQuestions().get(1).returnCorrect());
     }
     
     @Test
     public void essayCheckWorks() {
         this.qm.createEssay("Never gonna make you cry", "Never gonna say goodbye", "Never gonna tell a lie and hurt you");
         this.qm.answer("Never gonna make you cry", "Never gonna give you up");
-        assertFalse(this.qm.questions.get(0).returnCorrect());
+        assertFalse(this.qm.returnQuestions().get(0).returnCorrect());
     }
     
     @Test
@@ -163,25 +164,25 @@ public class QuestionManagerTest {
         this.qm.answer("Never gonna give", "give you up");
         this.qm.answer("Never gonna", "give you up");
         this.qm.check();
-        assertEquals(Boolean.FALSE, this.qm.questions.get(0).returnCorrect());
-        assertEquals(Boolean.TRUE, this.qm.questions.get(1).returnCorrect());
+        assertEquals(Boolean.FALSE, this.qm.returnQuestions().get(0).returnCorrect());
+        assertEquals(Boolean.TRUE, this.qm.returnQuestions().get(1).returnCorrect());
     }
     
     @Test
     public void tOFtoStringCorrect() {
         this.qm.createTOF("Never gonna give you up", "Never gonna let you down", Boolean.TRUE);
-        assertEquals(this.qm.questions.get(0).toString(), "Never gonna give you up|Never gonna let you down|true|null|null");
+        assertEquals("Never gonna give you up~Never gonna let you down~true~null~null", this.qm.returnQuestions().get(0).toString());
     }
     
     @Test
     public void oQtoStringCorrect() {
         this.qm.createOQ("Never gonna", "Run around", "And desert you");
-        assertEquals(this.qm.questions.get(0).toString(), "Never gonna|Run around|And desert you|null|null");
+        assertEquals("Never gonna~Run around~And desert you~null~null", this.qm.returnQuestions().get(0).toString());
     }
     
     @Test
     public void essaytoStringCorrect() {
         this.qm.createEssay("Never gonna make you cry", "Never gonna say goodbye", "Never gonna tell a lie");
-        assertEquals(this.qm.questions.get(0).toString(), "Never gonna make you cry|Never gonna say goodbye|Never gonna tell a lie|null|false");
+        assertEquals("Never gonna make you cry~Never gonna say goodbye~Never gonna tell a lie~null~false", this.qm.returnQuestions().get(0).toString());
     }
 }

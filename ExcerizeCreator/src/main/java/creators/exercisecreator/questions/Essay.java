@@ -1,4 +1,4 @@
-package creators.excersizecreator.questions;
+package creators.exercisecreator.questions;
 
 /**
  * Class for essay questions.
@@ -50,7 +50,12 @@ public class Essay implements Question {
     }
     
     @Override
+    public int returnType() {
+        return 3;
+    }
+    
+    @Override
     public String toString() {
-        return this.question + "|" + this.notes + "|" + this.answer + "|" + this.answered + "|" + this.correct;
+        return this.question + "~" + this.notes + "~" + this.answer + "~" + this.answered + "~" + this.correct;
     }
 }

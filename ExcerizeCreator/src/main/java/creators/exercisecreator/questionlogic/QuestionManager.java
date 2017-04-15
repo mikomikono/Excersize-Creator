@@ -1,16 +1,24 @@
-package creators.excersizecreator.questionlogic;
+package creators.exercisecreator.questionlogic;
 
-import creators.excersizecreator.questions.*;
+import creators.exercisecreator.questions.Essay;
+import creators.exercisecreator.questions.Feedback;
+import creators.exercisecreator.questions.TrueOrFalse;
+import creators.exercisecreator.questions.OpenQuestion;
+import creators.exercisecreator.questions.Question;
 import java.util.*;
 
 /**
  * Class for managing Questions with the same topic.
  */
 public class QuestionManager {
-    public List<Question> questions;
+    private List<Question> questions;
+    private List<String> info;
+    private String topic;
     
-    public QuestionManager() {
+    public QuestionManager(String topic) {
         this.questions = new ArrayList<>();
+        this.info = new ArrayList<>();
+        this.topic = topic;
     }
     
     /**
@@ -22,6 +30,15 @@ public class QuestionManager {
     */
     public void createTOF(String question, String notes, Boolean answer) {
         this.questions.add(new TrueOrFalse(question, notes, answer));
+    }
+
+    /**
+     * Method for additional info on the excersize
+     * 
+     * @param info The info
+     */
+    public void addInfo(String info) {
+        this.info.add(info);
     }
     
     /**
@@ -44,6 +61,15 @@ public class QuestionManager {
     */
     public void createEssay(String question, String notes, String answer) {
         this.questions.add(new Essay(question, notes, answer));
+    }
+    
+    /**
+     * Method for creating a new feedback question
+     * 
+     * @param question The question to get feedback on
+     */
+    public void createFeedback(String question) {
+        this.questions.add(new Feedback(question));
     }
     
     /**
@@ -81,6 +107,10 @@ public class QuestionManager {
         return cs;
     }
     
+    public List<String> returnInfo() {
+        return this.info;
+    }
+    
     /**
      * Method for checking if the questions have been answered correctly.
      */
@@ -88,5 +118,10 @@ public class QuestionManager {
         for (Question q: this.questions) {
             q.returnCorrect();
         }
+    }
+    
+    @Override
+    public String toString() {
+        return this.topic;
     }
 }

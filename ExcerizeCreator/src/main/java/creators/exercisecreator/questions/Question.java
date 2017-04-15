@@ -1,4 +1,4 @@
-package creators.excersizecreator.questions;
+package creators.exercisecreator.questions;
 
 /**
  * Interface for the different question types.
@@ -9,5 +9,6 @@ public interface Question {
     public String returnAnswered();
     public Boolean returnCorrect();
     public String returnNotes();
+    public int returnType();
     public void addAnswered(String q, String a);
 }
