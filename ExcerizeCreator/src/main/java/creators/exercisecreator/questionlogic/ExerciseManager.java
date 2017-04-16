@@ -81,6 +81,10 @@ public class ExerciseManager {
         return this.getQM(this.order.get(this.which));
     }
     
+    public QuestionManager getQM(int i) {
+        return this.qms.get(this.order.get(i));
+    }
+    
     public void nextQM() {
         this.which++;
     }

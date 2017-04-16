@@ -1,6 +1,7 @@
 package creators.exercisecreator.gui;
 
 import creators.exercisecreator.questionlogic.ExerciseManager;
+import java.awt.CardLayout;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,17 +10,21 @@ import javax.swing.JButton;
 /**
  * Class for the actions of the submit button.
  */
-public class SubmitListener implements ActionListener {
+public class ButtonListener implements ActionListener {
     private ExerciseManager em;
-    private Container container;
+    private CardLayout cl;
     private JButton next;
     private JButton prev;
+    private JButton save;
+    private Container parts;
 
-    public SubmitListener(ExerciseManager em, Container container, JButton next, JButton prev) {
+    public ButtonListener(ExerciseManager em, CardLayout cl, JButton next, JButton prev, JButton save, Container parts) {
         this.em = em;
-        this.container = container;
+        this.cl = cl;
         this.next = next;
         this.prev = prev;
+        this.save = save;
+        this.parts = parts;
     }
     
     @Override
@@ -27,14 +32,21 @@ public class SubmitListener implements ActionListener {
         if (e.getSource().equals(next)) {
             this.em.nextQM();
             this.prev.setEnabled(true);
-            System.out.println(this.em.which);
+            if (this.em.which == this.em.returnQMs().size() + 1) {
+                this.next.setEnabled(false);
+            }
+            this.cl.next(parts);
         } else if (e.getSource().equals(prev)) {
             this.em.prevQM();
+            this.next.setEnabled(true);
             if (this.em.which == 0) {
                 this.prev.setEnabled(false);
             }
-            System.out.println(this.em.which);
+            this.cl.previous(parts);
+        } else if (e.getSource().equals(save)) {
+            //saving?????
         }
+        System.out.println(this.em.which);
     }
     
 }
