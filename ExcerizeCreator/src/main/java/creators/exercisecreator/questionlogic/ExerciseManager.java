@@ -173,7 +173,7 @@ public class ExerciseManager {
             for (Question qs: qm.returnQuestions()) {
                 if (qs.returnQuestion().equals(question)) {
 //                    System.out.println(qm + "; " + qs.toString());
-                    this.fm.write(qm + "; " + qs.toString(), "https://github.com/mikomikono/Excersize-Creator/tree/master/ExcerizeCreator/answers" + this.file + ".txt");
+                    this.fm.write(qm + "; " + qs.toString(), this.file + ".txt");
                 }
             }
         }
