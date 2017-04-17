@@ -1,5 +1,6 @@
 package creators.exercisecreator.questionlogic;
 
+import creators.exercisecreator.questions.Question;
 import java.util.*;
 
 /**
@@ -10,12 +11,14 @@ public class ExerciseManager {
     private Map<Integer, String> order;
     public int which;
     private FileManager fm;
+    private String file;
 
     public ExerciseManager() {
         this.qms = new HashMap<>();
         this.fm = new FileManager();
         this.order = new HashMap<>();
         this.which = 0;
+        this.file = "unspecified";
     }
     
     /**
@@ -25,7 +28,12 @@ public class ExerciseManager {
     */
     public void addQuestionGroup(String topic) {
         this.qms.put(topic, new QuestionManager(topic));
-        this.order.put(this.order.size(), topic);
+        this.order.put(this.order.size() + 1, topic);
+    }
+    
+    public void addFileName(String file) {
+        this.file = file;
+//        System.out.println(this.file);
     }
 
     public List<QuestionManager> returnQMs() {
@@ -73,6 +81,10 @@ public class ExerciseManager {
         getQM(topic).answer(question, answer);
     }
     
+    public void addAnswer(QuestionManager qm, String question, String answer) {
+        qm.answer(question, answer);
+    }
+    
     public List<String> returnQMsQuestions(String topic) {
         return getQM(topic).returnQuestionStrings();
     }
@@ -86,7 +98,9 @@ public class ExerciseManager {
     }
     
     public void nextQM() {
-        this.which++;
+        if (this.which < this.returnQMs().size()) {
+            this.which++;
+        }
     }
     
     public void prevQM() {
@@ -153,9 +167,15 @@ public class ExerciseManager {
      * Method for saving a question onto a file.
      * 
      * @param question The question to be saved
-     * @param file The location of the file
      */
-    public void save(String question, String file) {
-        
+    public void save(String question) {
+        for (QuestionManager qm: this.returnQMs()) {
+            for (Question qs: qm.returnQuestions()) {
+                if (qs.returnQuestion().equals(question)) {
+//                    System.out.println(qm + "; " + qs.toString());
+                    this.fm.write(qm + "; " + qs.toString(), "https://github.com/mikomikono/Excersize-Creator/tree/master/ExcerizeCreator/answers" + this.file + ".txt");
+                }
+            }
+        }
     }
 }

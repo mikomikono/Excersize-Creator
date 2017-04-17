@@ -48,4 +48,8 @@ public class Feedback implements Question {
         return 3;
     }
     
+    @Override
+    public String toString() {
+        return "question: " + this.question + "; answer: " + this.answered;
+    }
 }

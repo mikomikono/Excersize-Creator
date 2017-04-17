@@ -78,6 +78,6 @@ public class TrueOrFalse implements Question {
     
     @Override
     public String toString() {
-        return this.question + "~" + this.notes + "~" + this.answer + "~" + this.answered + "~" + this.correct;
+        return "question: " + this.question + "; answer: " + this.answered + "; correct answer: " + this.answer;
     }
 }

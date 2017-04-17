@@ -2,6 +2,7 @@ package creators.exercisecreator.questionlogic;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.InputStream;
 import java.util.*;
 
 /**
@@ -20,13 +21,16 @@ public class FileManager {
      */
     public List<String> read(String file) {
         List<String> lines = new ArrayList<>();
-        try (Scanner reader = new Scanner(new File(file))) {
+        InputStream is = getClass().getClassLoader().getResourceAsStream(file);
+        try (Scanner reader = new Scanner(is)) {
             while (reader.hasNextLine()) {
                 lines.add(reader.nextLine());
             }
         } catch (Exception e) {
             lines.add("No excersize found.");
         }
+
+        
         return lines;
     }
     
@@ -38,7 +42,7 @@ public class FileManager {
      */
     public void write(String line, String file) {
         try (FileWriter writer = new FileWriter(file, true)) {
-            writer.write(line);
+            writer.write(line+ "\n");
             writer.close();
         } catch (Exception e) {
             System.out.println("Failed to save excersize.");

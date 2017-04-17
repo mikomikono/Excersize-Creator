@@ -54,7 +54,9 @@ public class OpenQuestion implements Question {
         this.correct = Boolean.FALSE;
         String[] as = this.answer.split("/");
         for (int i = 0; i < as.length; i++) {
-            if (this.answered.contains(as[i])) {
+            String a = this.answered.toLowerCase();
+            String aa = as[i].toLowerCase();
+            if (a.contains(aa)) {
                 this.correct = Boolean.TRUE;
             }
         }
@@ -67,6 +69,6 @@ public class OpenQuestion implements Question {
     
     @Override
     public String toString() {
-        return this.question + "~" + this.notes + "~" + this.answer + "~" + this.answered + "~" + this.correct;
+        return "question: " + this.question + "; answer: "+ this.answered + "; correct answer: " + this.answer;
     }
 }

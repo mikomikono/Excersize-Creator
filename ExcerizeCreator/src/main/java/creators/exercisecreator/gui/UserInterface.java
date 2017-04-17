@@ -20,7 +20,7 @@ public class UserInterface implements Runnable {
     @Override
     public void run() {
         frame = new JFrame("Exercise");
-        frame.setPreferredSize(new Dimension(500, 700));
+        frame.setPreferredSize(new Dimension(600, 600));
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -32,32 +32,44 @@ public class UserInterface implements Runnable {
 
     public void createComponents(Container container) {
         container.setLayout(new BorderLayout());
-
+        
         CardLayout cl = new CardLayout();
         JPanel parts = new JPanel(cl);
+        parts.setPreferredSize(new Dimension(400, 800));
+
+        JScrollPane jsp = new JScrollPane(parts);
+        jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        jsp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         
         JPanel beginning = new JPanel();
         beginning.setLayout(new BoxLayout(beginning, BoxLayout.X_AXIS));
         beginning.add(new JLabel("Please enter your class: "));
-        beginning.add(new JTextField());
+        JTextField addClass = new JTextField();
+        beginning.add(addClass);
         
         parts.add(beginning, "first page");
         
-        for (int i = 0; i < this.em.returnQMs().size(); i++) {
+        for (int i = 1; i < this.em.returnQMs().size() + 1; i++) {
             QuestionManager qm = this.em.getQM(i);
             JPanel part = new JPanel();
             part.setLayout(new BoxLayout(part, BoxLayout.Y_AXIS));
             
+            JPanel info = new JPanel();
+            info.setLayout(new BoxLayout(info, BoxLayout.Y_AXIS));
             for (String line: qm.returnInfo()) {
-                part.add(new JLabel("<html>" + line+ "</html>"));
+                info.add(new JLabel("<html>" + line+ "</html>"));
                 if (line.equals(qm.returnInfo().get(0))) {
-                    part.add(new JLabel(" "));
+                    info.add(new JLabel(" "));
                 }
             }
+            part.add(info);
             
             if (!qm.returnQuestions().isEmpty()) {
-                part.add(new JLabel(" "));
-                part.add(new JLabel("<html>" + qm.toString() + "</html>"));
+                JPanel assignment = new JPanel();
+                assignment.setLayout(new BoxLayout(assignment, BoxLayout.Y_AXIS));
+                assignment.add(new JLabel(" "));
+                assignment.add(new JLabel("<html>" + qm.toString() + "</html>"));
+                part.add(assignment);
             }
             
             for (Question q: qm.returnQuestions()) {
@@ -66,13 +78,13 @@ public class UserInterface implements Runnable {
                         part.add(createTOF(q));
                         break;
                     case 1:
-                        part.add(this.createOQ(q));
+                        part.add(createOQ(q));
                         break;
                     case 2:
-                        part.add(this.createEssay(q));
+                        part.add(createEssay(q));
                         break;
                     default:
-                        part.add(this.createFeedback(q));
+                        part.add(createFeedback(q));
                         break;
                 }
             }
@@ -81,26 +93,26 @@ public class UserInterface implements Runnable {
         }
         
         JPanel last = new JPanel();
-        last.add(new JLabel("Thank you for answering. Please remember to save! :)"));
+        last.add(new JLabel("Thank you for answering. :)"));
         parts.add(last);
         
         cl.first(parts);
         
-        container.add(parts, BorderLayout.CENTER);
+        container.add(jsp, BorderLayout.CENTER);
         
 //        container.add(new JLabel(" "));
 //        container.add(new JLabel(" "));
         
         JButton prev = new JButton("Previous");
-        if (this.em.which == 0) {
-            prev.setEnabled(false);
-        }
+        prev.setEnabled(false);
         JButton next = new JButton("Next");
+        next.setEnabled(false);
         JButton save = new JButton("Save");
 
         ButtonListener butt = new ButtonListener(em, cl, next, prev, save, parts);
         next.addActionListener(butt);
         prev.addActionListener(butt);
+        save.addActionListener(butt);
         
         JPanel panel = new JPanel();
         BoxLayout bl = new BoxLayout(panel, BoxLayout.X_AXIS);
@@ -113,24 +125,27 @@ public class UserInterface implements Runnable {
     }
     
     private JPanel createTOF(Question q) {
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
-        panel.add(new JCheckBox("<html>" + q.returnQuestion() + "</html>"));
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.add(new JCheckBox(q.returnQuestion()));
+        panel.add(new JLabel(""));
         return panel;
     }
     
     private JPanel createOQ(Question q) {
-        JPanel panel = new JPanel(new GridLayout(2,2));
-        panel.add(new JLabel("<html>" + q.returnQuestion() + "</html>"));
-        panel.add(new JLabel(""));
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.add(new JLabel(q.returnQuestion()));
         panel.add(new JTextField());
+        panel.add(new JLabel(""));
         return panel;
     }
     
     private JPanel createEssay(Question q) {
         JPanel panel = new JPanel();
-        panel.add(new JLabel("<html>" + q.returnQuestion() + "</html>"));
+        panel.add(new JLabel(q.returnQuestion()));
         panel.add(new JTextField());
+        panel.add(new JLabel(""));
         return panel;
     }
     
@@ -138,16 +153,11 @@ public class UserInterface implements Runnable {
         JPanel panel = new JPanel();
         BoxLayout bl = new BoxLayout(panel, BoxLayout.Y_AXIS);
         panel.setLayout(bl);
-        panel.add(new JLabel("<html>" + q.returnQuestion() + "</html>"));
+        panel.add(new JLabel(q.returnQuestion()));
         panel.add(new JTextField());
-        panel.add(new JPanel());
+        panel.add(new JLabel());
         return panel;
     }
-    
-//    public void saveData() {
-//        Container container = frame.getContentPane();
-//        
-//    }
 
     public JFrame getFrame() {
         return frame;

@@ -107,8 +107,34 @@ public class QuestionManager {
         return cs;
     }
     
+    public Boolean returnCorrect(String question) {
+        Question q = null;
+        for (Question qs: this.questions) {
+            if (qs.returnQuestion().equals(question)) {
+                q = qs;
+            }
+        }
+        if (q == null) {
+            return false;
+        }
+        return q.returnCorrect();
+    }
+    
     public List<String> returnInfo() {
         return this.info;
+    }
+    
+    public String returnNotes(String question) {
+        Question q = null;
+        for (Question qs: this.questions) {
+            if (qs.returnQuestion().equals(question)) {
+                q = qs;
+            }
+        }
+        if (q == null) {
+            return "";
+        }
+        return q.returnNotes();
     }
     
     /**
