@@ -13,4 +13,5 @@ Ohjelma jolla voi luoda opetukseen ja/tai opiskeluun tarkoitettuja tehtäviä/An
 - FileManager-luokkaan liittyviin metodeihin ei ole testejä vielä käytännössä yhtään, en ole täysin varma miten niitä tekisin
 - En ole lisännyt JavaDoc-moduulia checkstyleen koska en ymmärtänyt mihin se oli tarkoitus liittää
 - JavaDocini on muutenkin ehkä hieman vajavainen, keskityn siihen enemmän ensiviikolla
+- Checkstyleen jäi kaksi virhettä, koska minulla on liian monta sisäkkäistä "if" -lausetta, mutta quite frankly en keksinyt miten pääsisin niistä eroon ¯\_(ツ)_/¯
 - Väsyttää
