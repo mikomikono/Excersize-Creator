@@ -56,7 +56,7 @@ public class ButtonListener implements ActionListener {
             if (this.em.which != this.em.returnQMs().size() + 1) {
                 this.next.setEnabled(true);
             }
-                this.save.setEnabled(false);
+            this.save.setEnabled(false);
 
             Component component = this.parts.getComponent(this.em.which); //current part
 
@@ -70,7 +70,7 @@ public class ButtonListener implements ActionListener {
             
 //            System.out.println("0");
             
-            if (components.length > 1) { //if it has only 1 comp, it's an info page and doesn't need saving
+            if (components.length <= 1) { //if it has only 1 comp, it's an info page and doesn't need saving
                 if (components[1].getClass() == tf.getClass()) { //if it's the 1st page, after
                     JTextField t = (JTextField) components[1]; //the 1st panel there's only a
                     if (t.getText().isEmpty()) { //jtextfield w/the name for the answer file

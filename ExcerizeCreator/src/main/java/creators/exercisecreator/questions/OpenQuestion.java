@@ -69,6 +69,6 @@ public class OpenQuestion implements Question {
     
     @Override
     public String toString() {
-        return "question: " + this.question + "; answer: "+ this.answered + "; correct answer: " + this.answer;
+        return "question: " + this.question + "; answer: " + this.answered + "; correct answer: " + this.answer;
     }
 }

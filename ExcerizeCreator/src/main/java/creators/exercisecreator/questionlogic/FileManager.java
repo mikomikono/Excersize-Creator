@@ -21,8 +21,8 @@ public class FileManager {
      */
     public List<String> read(String file) {
         List<String> lines = new ArrayList<>();
-        InputStream is = getClass().getClassLoader().getResourceAsStream(file);
-        try (Scanner reader = new Scanner(is)) {
+//        InputStream is = getClass().getClassLoader().getResourceAsStream(file);
+        try (Scanner reader = new Scanner(new File(file))) {
             while (reader.hasNextLine()) {
                 lines.add(reader.nextLine());
             }
@@ -42,7 +42,7 @@ public class FileManager {
      */
     public void write(String line, String file) {
         try (FileWriter writer = new FileWriter(file, true)) {
-            writer.write(line+ "\n");
+            writer.write(line + "\n");
             writer.close();
         } catch (Exception e) {
             System.out.println("Failed to save excersize.");

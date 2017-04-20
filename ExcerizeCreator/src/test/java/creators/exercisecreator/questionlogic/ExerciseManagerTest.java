@@ -1,6 +1,6 @@
 package creators.exercisecreator.questionlogic;
 
-import creators.exercisecreator.questionlogic.ExerciseManager;
+import java.util.ArrayList;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -23,7 +23,8 @@ public class ExerciseManagerTest {
     
     @Test
     public void managerAddsNewQM() {
-        assertNotNull(this.em.returnQMs().get(0));
+        assertEquals("topic", this.em.returnQMs().get(0).toString());
+        assertEquals("topic", this.em.getQM(1).toString());
     }
     
     @Test
@@ -48,7 +49,11 @@ public class ExerciseManagerTest {
     public void addingAnswersWorks() {
         this.em.addQuestion("topic", 1, "hello", "nah", "hello");
         this.em.addAnswer("topic", "hello", "hello");
+        QuestionManager qm = new QuestionManager("hoi");
+        qm.createFeedback("hoi!");
+        this.em.addAnswer(qm, "hoi!", "hoi!!!");
         assertEquals("hello", this.em.returnQMs().get(0).returnQuestions().get(0).returnAnswered());
+        assertEquals("hoi!!!", qm.returnQuestions().get(0).returnAnswered());
     }
     
     @Test
@@ -61,5 +66,40 @@ public class ExerciseManagerTest {
     public void createsNewQMIfNewTopic() {
         this.em.addQuestion("topic2", 0, "ye", "ya", "yo");
         assertEquals("topic2", this.em.returnTopics().get(0));
+    }
+    
+    @Test
+    public void addsInfo() {
+        this.em.addInfo("topic", "hello");
+        ArrayList<String> list = new ArrayList<>();
+        list.add("hello");
+        assertEquals(list, this.em.getQM().returnInfo());
+    }
+    
+    @Test
+    public void nextQMWorks() {
+        this.em.addQuestionGroup("ya");
+        this.em.nextQM();
+        assertEquals(2, this.em.which);
+    }
+    
+    @Test
+    public void prevQMWorks() {
+        this.em.addQuestionGroup("ye");
+        this.em.nextQM();
+        this.em.prevQM();
+        assertEquals(1, this.em.which);
+    }
+    
+    @Test
+    public void whichDoesntGoUpIfNoNext() {
+        this.em.nextQM();
+        assertEquals(1, this.em.which);
+    }
+    
+    @Test
+    public void whichDoesntGoDownIfNoPrev() {
+        this.em.prevQM();
+        assertEquals(1, this.em.which);
     }
 }

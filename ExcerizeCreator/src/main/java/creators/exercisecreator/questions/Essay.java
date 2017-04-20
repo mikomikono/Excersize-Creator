@@ -51,7 +51,7 @@ public class Essay implements Question {
     
     @Override
     public int returnType() {
-        return 3;
+        return 2;
     }
     
     @Override

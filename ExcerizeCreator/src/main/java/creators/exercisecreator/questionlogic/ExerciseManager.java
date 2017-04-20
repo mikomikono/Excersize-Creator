@@ -17,7 +17,7 @@ public class ExerciseManager {
         this.qms = new HashMap<>();
         this.fm = new FileManager();
         this.order = new HashMap<>();
-        this.which = 0;
+        this.which = 1;
         this.file = "unspecified";
     }
     
@@ -104,7 +104,7 @@ public class ExerciseManager {
     }
     
     public void prevQM() {
-        if (this.which > 0) {
+        if (this.which > 1) {
             this.which--;
         }
     }
@@ -134,7 +134,7 @@ public class ExerciseManager {
         List<String> lines = this.fm.read(file);
         for (String line: lines) {
             String[] data = line.split("~");
-            if (data[1].equals("info")){
+            if (data[1].equals("info")) {
                 QuestionManager qm = getQM(data[2], Integer.parseInt(data[3]));
                 for (int i = 4; i < data.length; i++) {
                     qm.addInfo(data[i]);

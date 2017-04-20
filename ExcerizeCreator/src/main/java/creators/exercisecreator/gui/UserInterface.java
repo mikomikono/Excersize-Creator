@@ -57,7 +57,7 @@ public class UserInterface implements Runnable {
             JPanel info = new JPanel();
             info.setLayout(new BoxLayout(info, BoxLayout.Y_AXIS));
             for (String line: qm.returnInfo()) {
-                info.add(new JLabel("<html>" + line+ "</html>"));
+                info.add(new JLabel("<html>" + line + "</html>"));
                 if (line.equals(qm.returnInfo().get(0))) {
                     info.add(new JLabel(" "));
                 }
