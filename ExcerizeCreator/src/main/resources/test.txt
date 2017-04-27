@@ -1,0 +1,5 @@
+~info~Topic is a topic~5~This is info
+~5~Topic is a topic~0~Would you?~You really ought to~true
+~5~Topic is a topic~1~A question can be open, right?~Sure it can, silly!~yes/yep/yeah/sure/of course/fuck yes
+~5~Topic is a topic~2~Essays, am I right?~This doesn't have a correct answer~It still needs an answer though
+~5~Topic is a topic~3~Would you care to feedback?

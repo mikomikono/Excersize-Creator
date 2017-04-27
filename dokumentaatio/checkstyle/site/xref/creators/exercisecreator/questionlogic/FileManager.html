@@ -29,13 +29,13 @@
 <a class="jxr_linenumber" name="L21" href="#L21">21</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L22" href="#L22">22</a>      <strong class="jxr_keyword">public</strong> List&lt;String&gt; read(String file) {
 <a class="jxr_linenumber" name="L23" href="#L23">23</a>          List&lt;String&gt; lines = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <em class="jxr_comment">//        InputStream is = getClass().getClassLoader().getResourceAsStream(file);</em>
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>          <strong class="jxr_keyword">try</strong> (Scanner reader = <strong class="jxr_keyword">new</strong> Scanner(<strong class="jxr_keyword">new</strong> File(file))) {
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>          InputStream is = getClass().getClassLoader().getResourceAsStream(file);
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>          <strong class="jxr_keyword">try</strong> (Scanner reader = <strong class="jxr_keyword">new</strong> Scanner(is)) {
 <a class="jxr_linenumber" name="L26" href="#L26">26</a>              <strong class="jxr_keyword">while</strong> (reader.hasNextLine()) {
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>                  lines.add(reader.nextLine());
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>              }
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>          } <strong class="jxr_keyword">catch</strong> (Exception e) {
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>              lines.add(<span class="jxr_string">"No excersize found."</span>);
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>              lines.add(<span class="jxr_string">"﻿~info~Error~1~No Exercizes found."</span>);
 <a class="jxr_linenumber" name="L31" href="#L31">31</a>          }
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>  
 <a class="jxr_linenumber" name="L33" href="#L33">33</a>          
@@ -47,16 +47,18 @@
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_javadoccomment">     * </em>
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment">     * @param line String of the line that needs to be saved</em>
 <a class="jxr_linenumber" name="L41" href="#L41">41</a>  <em class="jxr_javadoccomment">     * @param file Location of the file that the saving is done on</em>
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> write(String line, String file) {
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>          <strong class="jxr_keyword">try</strong> (FileWriter writer = <strong class="jxr_keyword">new</strong> FileWriter(file, <strong class="jxr_keyword">true</strong>)) {
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>              writer.write(line + <span class="jxr_string">"\n"</span>);
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>              writer.close();
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>          } <strong class="jxr_keyword">catch</strong> (Exception e) {
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>              System.out.println(<span class="jxr_string">"Failed to save excersize."</span>);
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>          }
-<a class="jxr_linenumber" name="L50" href="#L50">50</a>      }
-<a class="jxr_linenumber" name="L51" href="#L51">51</a>  }
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  <em class="jxr_javadoccomment">     * @return Returns a string depending on whether or not saving was successful</em>
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>      <strong class="jxr_keyword">public</strong> String write(String line, String file) {
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>          <strong class="jxr_keyword">try</strong> (FileWriter writer = <strong class="jxr_keyword">new</strong> FileWriter(file, <strong class="jxr_keyword">true</strong>)) {
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>              writer.write(line + <span class="jxr_string">"\n"</span>);
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>              writer.close();
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>              <strong class="jxr_keyword">return</strong> <span class="jxr_string">"Saved!"</span>;
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>          } <strong class="jxr_keyword">catch</strong> (Exception e) {
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>              <strong class="jxr_keyword">return</strong> <span class="jxr_string">"Failed to save exercize."</span>;
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>          }
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>      }
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2017. All rights reserved.</div>

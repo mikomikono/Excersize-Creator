@@ -43,28 +43,28 @@ public class UserInterface implements Runnable {
         
         JPanel beginning = new JPanel();
         beginning.setLayout(new BoxLayout(beginning, BoxLayout.X_AXIS));
-        beginning.add(new JLabel("Please enter your class: "));
+        beginning.add(new JLabel("Please enter your class/student ID/etc: "));
         JTextField addClass = new JTextField();
         beginning.add(addClass);
         
         parts.add(beginning, "first page");
         
-        for (int i = 1; i < this.em.returnQMs().size() + 1; i++) {
+        for (int i = 1; i < this.em.getQMs().size() + 1; i++) {
             QuestionManager qm = this.em.getQM(i);
             JPanel part = new JPanel();
             part.setLayout(new BoxLayout(part, BoxLayout.Y_AXIS));
             
             JPanel info = new JPanel();
             info.setLayout(new BoxLayout(info, BoxLayout.Y_AXIS));
-            for (String line: qm.returnInfo()) {
+            for (String line: qm.getInfo()) {
                 info.add(new JLabel("<html>" + line + "</html>"));
-                if (line.equals(qm.returnInfo().get(0))) {
+                if (line.equals(qm.getInfo().get(0))) {
                     info.add(new JLabel(" "));
                 }
             }
             part.add(info);
             
-            if (!qm.returnQuestions().isEmpty()) {
+            if (!qm.getQuestions().isEmpty()) {
                 JPanel assignment = new JPanel();
                 assignment.setLayout(new BoxLayout(assignment, BoxLayout.Y_AXIS));
                 assignment.add(new JLabel(" "));
@@ -72,7 +72,7 @@ public class UserInterface implements Runnable {
                 part.add(assignment);
             }
             
-            for (Question q: qm.returnQuestions()) {
+            for (Question q: qm.getQuestions()) {
                 switch (q.returnType()) {
                     case 0:
                         part.add(createTOF(q));

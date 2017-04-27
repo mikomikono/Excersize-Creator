@@ -1,0 +1,4 @@
+1. Avaa tehtävä tuplaklikkaamalla tiedostoa. (Jos käytät Ubuntua, saatat joutua avaamaan sen terminaalin kautta komennolla "java -jar FutuuriTehtävä.jar".)
+2. Kirjoita ensimmäiseen kenttään opiskelijanumerosi tms. Paina "save" nappia päästäksesi eteenpäin.
+3. Tee tehtävät ohjeiden mukaan. Muista painaa "save" nappia aina tehtävien välissä, muuten et pääse eteenpäin.
+4. Kun olet valmis, voit sulkea ohjelman. Vastaukset jotka annoit, ovat tallentuneet tekstitiedostoon ohjelman sisältämään kansioon. Tiedoston nimi on alussa antamasi tunnus.

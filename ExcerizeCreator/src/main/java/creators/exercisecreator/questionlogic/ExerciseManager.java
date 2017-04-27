@@ -23,7 +23,6 @@ public class ExerciseManager {
     
     /**
     * Method for adding a new QuestionManager with a specific topic.
-    * 
     * @param topic The topic of the questions in the QuestionManager
     */
     public void addQuestionGroup(String topic) {
@@ -31,12 +30,16 @@ public class ExerciseManager {
         this.order.put(this.order.size() + 1, topic);
     }
     
+    /**
+     * Method for adding the filename where the answers will be saved.
+     * @param file The filename
+     */
     public void addFileName(String file) {
         this.file = file;
 //        System.out.println(this.file);
     }
 
-    public List<QuestionManager> returnQMs() {
+    public List<QuestionManager> getQMs() {
         List<QuestionManager> qm = new ArrayList<>();
         for (QuestionManager q: this.qms.values()) {
             qm.add(q);
@@ -44,7 +47,7 @@ public class ExerciseManager {
         return qm;
     }
     
-    public List<String> returnTopics() {
+    public List<String> getTopics() {
         List<String> ts = new ArrayList<>();
         for (String t: this.qms.keySet()) {
             ts.add(t);
@@ -52,6 +55,14 @@ public class ExerciseManager {
         return ts;
     }
     
+    /**
+     * Method for adding a question into a QuestionManager
+     * @param topic The topic of the QuestionManager
+     * @param type The type of the question
+     * @param question The question
+     * @param notes Any notes that the question has
+     * @param answer The correct answer to the question
+     */
     public void addQuestion(String topic, int type, String question, String notes, String answer) {
         QuestionManager qm = getQM(topic);
         switch (type) {
@@ -72,21 +83,37 @@ public class ExerciseManager {
                 qm.createFeedback(question);
         }
     }
-    
+    /**
+     * Method for adding info the the QuesionManager.
+     * @param topic The topic of the QuestionManager
+     * @param info The info that is added
+     */
     public void addInfo(String topic, String info) {
         getQM(topic).addInfo(info);
     }
     
+    /**
+     * Method for answering a question with the topic of the QuestionManager.
+     * @param topic The topic of the QuestionManager the question is in
+     * @param question The question that is answered
+     * @param answer The answer that is given
+     */
     public void addAnswer(String topic, String question, String answer) {
         getQM(topic).answer(question, answer);
     }
     
+    /**
+     * Method for anwering a question with the QuestionManager.
+     * @param qm The QuestionManager the question is in
+     * @param question The question that is answered
+     * @param answer The answer that is given
+     */
     public void addAnswer(QuestionManager qm, String question, String answer) {
         qm.answer(question, answer);
     }
     
-    public List<String> returnQMsQuestions(String topic) {
-        return getQM(topic).returnQuestionStrings();
+    public List<String> getQMsQuestions(String topic) {
+        return getQM(topic).getQuestionStrings();
     }
     
     public QuestionManager getQM() {
@@ -97,12 +124,18 @@ public class ExerciseManager {
         return this.qms.get(this.order.get(i));
     }
     
+    /**
+     * Method for switching to the next QuestionManager in the list.
+     */
     public void nextQM() {
-        if (this.which < this.returnQMs().size()) {
+        if (this.which < this.getQMs().size()) {
             this.which++;
         }
     }
     
+    /**
+     * Method for switching to the previous QuestionManager in the list.
+     */
     public void prevQM() {
         if (this.which > 1) {
             this.which--;
@@ -127,7 +160,6 @@ public class ExerciseManager {
     
     /**
      * Method for creating a QuestionManager from questions saved into a file
-     * 
      * @param file Location of the file
      */
     public void read(String file) {
@@ -165,17 +197,21 @@ public class ExerciseManager {
     
     /**
      * Method for saving a question onto a file.
-     * 
      * @param question The question to be saved
+     * @return Returns a string depending on the success of the saving
      */
-    public void save(String question) {
-        for (QuestionManager qm: this.returnQMs()) {
-            for (Question qs: qm.returnQuestions()) {
+    public String save(String question) {
+        for (QuestionManager qm: this.getQMs()) {
+            for (Question qs: qm.getQuestions()) {
                 if (qs.returnQuestion().equals(question)) {
 //                    System.out.println(qm + "; " + qs.toString());
-                    this.fm.write(qm + "; " + qs.toString(), this.file + ".txt");
+                    String success = this.fm.write(qm + "; " + qs.toString(), this.file);
+                    if (success.equals("Failed to save exercize.")) {
+                        return success;
+                    }
                 }
             }
         }
+        return "Saved!";
     }
 }

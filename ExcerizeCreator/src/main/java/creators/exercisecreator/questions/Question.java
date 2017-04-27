@@ -11,4 +11,5 @@ public interface Question {
     public String returnNotes();
     public int returnType();
     public void addAnswered(String q, String a);
+    public void check();
 }

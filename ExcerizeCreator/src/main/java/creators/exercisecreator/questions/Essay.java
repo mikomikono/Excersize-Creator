@@ -55,6 +55,10 @@ public class Essay implements Question {
     }
     
     @Override
+    public void check() {
+    }
+    
+    @Override
     public String toString() {
         return "question: " + this.question + "; answer: " + this.answered;
     }

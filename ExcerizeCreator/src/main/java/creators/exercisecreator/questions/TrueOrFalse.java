@@ -63,6 +63,8 @@ public class TrueOrFalse implements Question {
         return this.correct;
     }
     
+
+    @Override
     public void check() {
         if (this.answer.equals(this.answered)) {
             this.correct = Boolean.TRUE;

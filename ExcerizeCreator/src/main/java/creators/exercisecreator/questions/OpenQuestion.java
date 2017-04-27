@@ -50,6 +50,7 @@ public class OpenQuestion implements Question {
         return this.correct;
     }
     
+    @Override
     public void check() {
         this.correct = Boolean.FALSE;
         String[] as = this.answer.split("/");

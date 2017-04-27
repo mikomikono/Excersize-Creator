@@ -20,6 +20,15 @@ public class QuestionManager {
         this.info = new ArrayList<>();
         this.topic = topic;
     }
+
+    /**
+     * Method for adding additional info on the excersize
+     * 
+     * @param info The info
+     */
+    public void addInfo(String info) {
+        this.info.add(info);
+    }
     
     /**
     * Method for creating a new TrueOrFalse question
@@ -30,15 +39,6 @@ public class QuestionManager {
     */
     public void createTOF(String question, String notes, Boolean answer) {
         this.questions.add(new TrueOrFalse(question, notes, answer));
-    }
-
-    /**
-     * Method for additional info on the excersize
-     * 
-     * @param info The info
-     */
-    public void addInfo(String info) {
-        this.info.add(info);
     }
     
     /**
@@ -87,11 +87,11 @@ public class QuestionManager {
     }
     
     
-    public List<Question> returnQuestions() {
+    public List<Question> getQuestions() {
         return this.questions;
     }
     
-    public List<String> returnQuestionStrings() {
+    public List<String> getQuestionStrings() {
         List<String> qs = new ArrayList<>();
         for (Question q : this.questions) {
             qs.add(q.returnQuestion());
@@ -99,7 +99,7 @@ public class QuestionManager {
         return qs;
     }
     
-    public List<Boolean> returnCorrects() {
+    public List<Boolean> getCorrects() {
         List<Boolean> cs = new ArrayList<>();
         for (Question q : this.questions) {
             cs.add(q.returnCorrect());
@@ -107,7 +107,7 @@ public class QuestionManager {
         return cs;
     }
     
-    public Boolean returnCorrect(String question) {
+    public Boolean getCorrect(String question) {
         Question q = null;
         for (Question qs: this.questions) {
             if (qs.returnQuestion().equals(question)) {
@@ -120,11 +120,11 @@ public class QuestionManager {
         return q.returnCorrect();
     }
     
-    public List<String> returnInfo() {
+    public List<String> getInfo() {
         return this.info;
     }
     
-    public String returnNotes(String question) {
+    public String getNotes(String question) {
         Question q = null;
         for (Question qs: this.questions) {
             if (qs.returnQuestion().equals(question)) {
@@ -141,9 +141,9 @@ public class QuestionManager {
      * Method for checking if the questions have been answered correctly.
      */
     public void check() {
-        for (Question q: this.questions) {
-            q.returnCorrect();
-        }
+        this.questions.stream().forEach((q) -> {
+            q.check();
+        });
     }
     
     @Override

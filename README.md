@@ -4,14 +4,10 @@ Ohjelma jolla voi luoda opetukseen ja/tai opiskeluun tarkoitettuja tehtäviä/An
 ## Dokumentaatio
 [Aiheen kuvaus](https://github.com/mikomikono/Excersize-Creator/blob/master/dokumentaatio/aiheenKuvausJaRakenne.md)
 [Tuntikirjanpito](https://github.com/mikomikono/Excersize-Creator/blob/master/dokumentaatio/tuntikirjanpito.md)
-[Pit testaus](https://htmlpreview.github.io/?https://github.com/mikomikono/Excersize-Creator/blob/master/dokumentaatio/pit/201704201855/index.html)
+[Pit testaus](https://htmlpreview.github.io/?https://github.com/mikomikono/Excersize-Creator/blob/master/dokumentaatio/pit/201704272352/index.html)
 [Checkstyle](https://htmlpreview.github.io/?https://github.com/mikomikono/Excersize-Creator/blob/master/dokumentaatio/checkstyle/site/checkstyle.html)
 
 ## Notes
-- Ohjelma tehtävän luontia vaille valmis (se on ruma, tiedän)
-- Yritin tehdä enemmänkin sekvenssikaavioita mutta en osannut :(
-- FileManager-luokkaan liittyviin metodeihin ei ole testejä vielä käytännössä yhtään, en ole täysin varma miten niitä tekisin
-- En ole lisännyt JavaDoc-moduulia checkstyleen koska en ymmärtänyt mihin se oli tarkoitus liittää
-- JavaDocini on muutenkin ehkä hieman vajavainen, keskityn siihen enemmän ensiviikolla
-- Checkstyleen jäi kaksi virhettä, koska minulla on liian monta sisäkkäistä "if" -lausetta, mutta quite frankly en keksinyt miten pääsisin niistä eroon ¯\_(ツ)_/¯
-- Väsyttää
+- JavaDoc-moduuli puuttuu edelleen ja nyt jostain syystä clean&buildkaan ei enää toimi??????
+- jar-tiedostossa oleva ohjelma on hieman vanhempi kuin tämän hetkinen koodi, koska se toimii paremmin, en tiedä mitä olen onnistunut tekemään
+- Tehtävien luominen puuttuu vielä kokonaan, en ole varma yritänkö saada sitä valmiiksi lainkaan, se on ehkä hieman liikaa työtä kun on viikko jäljellä

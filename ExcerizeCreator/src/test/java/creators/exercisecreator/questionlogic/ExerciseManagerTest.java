@@ -23,26 +23,26 @@ public class ExerciseManagerTest {
     
     @Test
     public void managerAddsNewQM() {
-        assertEquals("topic", this.em.returnQMs().get(0).toString());
+        assertEquals("topic", this.em.getQMs().get(0).toString());
         assertEquals("topic", this.em.getQM(1).toString());
     }
     
     @Test
     public void addingTOFWorks() {
         this.em.addQuestion("topic", 0, "wah", "wah", "true");
-        assertEquals("T", this.em.returnQMs().get(0).returnQuestions().get(0).returnAnswer());
+        assertEquals("T", this.em.getQMs().get(0).getQuestions().get(0).returnAnswer());
     }
     
     @Test
     public void addingOQWorks() {
         this.em.addQuestion("topic", 1, "weh", "whe", "oops");
-        assertEquals("weh", this.em.returnQMs().get(0).returnQuestions().get(0).returnQuestion());
+        assertEquals("weh", this.em.getQMs().get(0).getQuestions().get(0).returnQuestion());
     }
     
     @Test
     public void addingEssayWorks() {
         this.em.addQuestion("topic", 2, "hah", "heh", "haaaah");
-        assertEquals("hah", this.em.returnQMs().get(0).returnQuestions().get(0).returnQuestion());
+        assertEquals("hah", this.em.getQMs().get(0).getQuestions().get(0).returnQuestion());
     }
     
     @Test
@@ -52,20 +52,20 @@ public class ExerciseManagerTest {
         QuestionManager qm = new QuestionManager("hoi");
         qm.createFeedback("hoi!");
         this.em.addAnswer(qm, "hoi!", "hoi!!!");
-        assertEquals("hello", this.em.returnQMs().get(0).returnQuestions().get(0).returnAnswered());
-        assertEquals("hoi!!!", qm.returnQuestions().get(0).returnAnswered());
+        assertEquals("hello", this.em.getQMs().get(0).getQuestions().get(0).returnAnswered());
+        assertEquals("hoi!!!", qm.getQuestions().get(0).returnAnswered());
     }
     
     @Test
     public void returningQuestionsWorks() {
         this.em.addQuestion("topic", 3, "ye", "ha", "hoo");
-        assertEquals("ye", this.em.returnQMsQuestions("topic").get(0));
+        assertEquals("ye", this.em.getQMsQuestions("topic").get(0));
     }
     
     @Test
     public void createsNewQMIfNewTopic() {
         this.em.addQuestion("topic2", 0, "ye", "ya", "yo");
-        assertEquals("topic2", this.em.returnTopics().get(0));
+        assertEquals("topic2", this.em.getTopics().get(0));
     }
     
     @Test
@@ -73,7 +73,7 @@ public class ExerciseManagerTest {
         this.em.addInfo("topic", "hello");
         ArrayList<String> list = new ArrayList<>();
         list.add("hello");
-        assertEquals(list, this.em.getQM().returnInfo());
+        assertEquals(list, this.em.getQM().getInfo());
     }
     
     @Test
@@ -102,4 +102,40 @@ public class ExerciseManagerTest {
         this.em.prevQM();
         assertEquals(1, this.em.which);
     }
+    
+    @Test
+    public void readsFileCorrectly() {
+        this.em.read("test.txt");
+        assertEquals("This is info", this.em.getQM(5).getInfo().get(0));
+        assertEquals("Would you?", this.em.getQM(5).getQuestions().get(0).returnQuestion());
+        assertEquals("A question can be open, right?", this.em.getQM(5).getQuestions().get(1).returnQuestion());
+        assertEquals("Essays, am I right?", this.em.getQM(5).getQuestions().get(2).returnQuestion());
+        assertEquals("Would you care to feedback?", this.em.getQM(5).getQuestions().get(3).returnQuestion());
+//        assertEquals(this.em.getQM(5));
+    }
+    
+    @Test
+    public void readsFileIncorrectly() {
+        this.em.read("testi.txt");
+        assertEquals("No Exercizes found.", this.em.getQM(1).getInfo().get(0));
+    }
+    
+    @Test
+    public void savesFileCorrectly() {
+        this.em.addQuestion("topic", 0, "Yes?", "Yes.", "true");
+        this.em.addAnswer(this.em.getQM(), "Yes?", "true");
+        this.em.addFileName("testanswer.txt");
+        String saved = this.em.save("Yes?");
+        assertEquals("Saved!", saved);
+    }
+    
+    //I don't know how to get an exception in the filemanager lol orz
+//    @Test
+//    public void savesFileIncorrectly() {
+//        this.em.addQuestion("topic", 0, "Yes?", "Yes.", "true");
+//        this.em.addAnswer(this.em.getQM(), "Yes?", "true");
+//        this.em.addFileName("testanswer");
+//        String saved = this.em.save("Yes?");
+//        assertEquals("Failed to save exercize." , saved);
+//    }
 }

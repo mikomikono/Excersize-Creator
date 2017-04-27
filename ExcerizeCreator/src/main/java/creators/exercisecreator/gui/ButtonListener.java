@@ -31,7 +31,7 @@ public class ButtonListener implements ActionListener {
         if (e.getSource().equals(next)) {
             this.em.nextQM();
 
-            if (this.em.which == this.em.returnQMs().size() + 1) {
+            if (this.em.which == this.em.getQMs().size() + 1) {
                 this.save.setEnabled(false);
             } else {
                 this.save.setEnabled(true);
@@ -53,7 +53,7 @@ public class ButtonListener implements ActionListener {
             this.cl.previous(parts);
 //            System.out.println(this.em.which);
         } else if (e.getSource().equals(save)) {            
-            if (this.em.which != this.em.returnQMs().size() + 1) {
+            if (this.em.which != this.em.getQMs().size() + 1) {
                 this.next.setEnabled(true);
             }
             this.save.setEnabled(false);
@@ -70,7 +70,7 @@ public class ButtonListener implements ActionListener {
             
 //            System.out.println("0");
             
-            if (components.length <= 1) { //if it has only 1 comp, it's an info page and doesn't need saving
+            if (components.length < 1) { //if it has only 1 comp, it's an info page and doesn't need saving
                 if (components[1].getClass() == tf.getClass()) { //if it's the 1st page, after
                     JTextField t = (JTextField) components[1]; //the 1st panel there's only a
                     if (t.getText().isEmpty()) { //jtextfield w/the name for the answer file
@@ -113,8 +113,8 @@ public class ButtonListener implements ActionListener {
         this.em.addAnswer(this.em.getQM(), question, answer);
 //        System.out.println(this.em.getQM().returnCorrect(question));
         
-        if (!this.em.getQM().returnCorrect(question)) {
-            notes.setText("<html>" + this.em.getQM().returnNotes(question) + "</html>");
+        if (!this.em.getQM().getCorrect(question)) {
+            notes.setText("<html>" + this.em.getQM().getNotes(question) + "</html>");
             notes.setForeground(Color.red);
         } else {
             notes.setText("Correct!");
@@ -134,8 +134,8 @@ public class ButtonListener implements ActionListener {
         
         this.em.addAnswer(this.em.getQM(), question, answer);
 //        System.out.println(this.em.getQM().returnCorrect(question));
-        if (!this.em.getQM().returnCorrect(question)) {
-            notes.setText("<html>" + this.em.getQM().returnNotes(question) + "</html>");
+        if (!this.em.getQM().getCorrect(question)) {
+            notes.setText("<html>" + this.em.getQM().getNotes(question) + "</html>");
             notes.setForeground(Color.red);
         } else {
             notes.setText("Correct!");

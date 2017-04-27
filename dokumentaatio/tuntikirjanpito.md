@@ -15,4 +15,5 @@ Päivä | Tunnit | Kuvaus
 15.04.2017 | 2h | Käyttöliittymä, jota en edelleenkään osaa tehdäääääääää (sain tosin napin edes osittain toimimaan?)
 16.04.2017 | 3h | Käyttöliittymää edelleen, mutta ainakin etenin vihdoin
 17.04.2017 | 8h | Käyttöliittymä on viimein valmis, nyt kun saisin .jar tiedostosta tallentamisen toimimaan......
-20.04.2017 | 3h | Testejä, kaavioita, 4. dediksen viimeistely
+20.04.2017 | 3h | Testejä, kaavioita, 5. dediksen viimeistely
+27.04.2017 | 2.5h | Javadocia etc, 6. dediksen viimestely
